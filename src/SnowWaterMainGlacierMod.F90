@@ -96,7 +96,7 @@ contains
        ThicknessSnowSoilLayer(LoopInd) = 0.0
        DepthSnowSoilLayer(LoopInd)     = 0.0
 
-       if ( OptSnowAlbedo == 3 ) then
+       if ( ( OptSnowAlbedo == 3 ) .and. (NumSnowLayerNeg < 0) ) then
           MassBChydropho(LoopInd)         = 0.0
           MassBChydrophi(LoopInd)         = 0.0
           MassOChydropho(LoopInd)         = 0.0
@@ -134,7 +134,7 @@ contains
     endif
 
     !SNICAR
-    if ( OptSnowAlbedo == 3 )    call SnowAerosolSnicar(noahmp)
+    if ( OptSnowAlbedo == 3 ) call SnowAerosolSnicar(noahmp)
 
     ! sum up snow mass for layered snow
     if ( NumSnowLayerNeg < 0 ) then  ! MB: only do for multi-layer
